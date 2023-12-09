@@ -39,11 +39,6 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {/* <button
-            disabled={false}
-            className="flex w-44 justify-center font-extralight bg-black   rounded-md  border border-transparent  py-1 px-0 text-base text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 focus:ring-offset-slate-500">
-            Connect Wallet
-          </button> */}
           <ConnectButton accountStatus="address" label="Connect Wallet" />{" "}
         </div>
       </nav>

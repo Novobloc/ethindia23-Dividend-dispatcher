@@ -1,2 +1,1 @@
-declare module "react-apexcharts"
-declare module "wagmi"
+declare module "react-apexcharts";

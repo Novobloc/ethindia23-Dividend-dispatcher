@@ -12,6 +12,7 @@ export const urlConfig = {
       `/portfolio/v2/prices/token_prices/time_range?chain_id=${chainId}&contract_address=${token}&currency=${vsCurrency}&granularity=day`
   },
   history: {
-    GET_TRANSACTIONS: (address: string) => `${url}/history/v2.0/history/0x5B4d77e199FE8e5090009C72d2a5581C74FEbE89/events?limit=10&chainId=137`
+    GET_TRANSACTIONS: (address: string, chainId: string, tokenAddress: string) =>
+      `${url}/history/v2.0/history/${address}/events?limit=10&chainId=${chainId}&tokenAddress=${tokenAddress}`
   }
 };
