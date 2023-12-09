@@ -1,5 +1,5 @@
 import React from "react";
-import TableComponent from "../utils/Table";
+import TableComponent from "utils/Table";
 
 const transactions = [
   {

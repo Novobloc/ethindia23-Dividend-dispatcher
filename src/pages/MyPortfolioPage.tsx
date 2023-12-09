@@ -1,10 +1,10 @@
 import React from "react";
-import PortfolioStatsTable from "../components/PortfolioStatsTable";
-import PortfolioStatsWidget from "../components/PortfolioStatsWidget";
+import PortfolioStatsTable from "components/PortfolioStatsTable";
+import PortfolioStatsWidget from "components/PortfolioStatsWidget";
 
 const MyPortfolioPage = () => {
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
       <PortfolioStatsWidget />
       <PortfolioStatsTable />
     </div>
