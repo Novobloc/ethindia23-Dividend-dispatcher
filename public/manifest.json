@@ -1,7 +1,7 @@
 {
   "short_name": "1inch",
-  "name": "1inch",
-  "icons": [],
+  "name": "1inch App",
+
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
