@@ -1,5 +1,5 @@
 {
-    "name": "@1inch/delegating",
+    "name": "dividend-dispatcher-plugin",
     "version": "1.0.1",
     "description": "Set of contracts for delegating incentives",
     "homepage": "https://github.com/1inch/delegating#readme",
@@ -40,19 +40,10 @@
         "solidity-coverage": "0.8.4"
     },
     "scripts": {
-        "test": "hardhat test",
-        "test:ci": "hardhat test",
-        "clean": "rimraf artifacts cache coverage contracts/hardhat-dependency-compiler",
+        "compile": "hardhat compile",
         "deploy": "hardhat run --network polygonmumbai scripts/deploy.js",
-        "build": "rimraf ./dist && mkdir dist && cp package.json ./dist && cp README.md ./dist && cp -R ./contracts ./dist/contracts",
-        "coverage": "hardhat coverage",
-        "verify": "hardhat verify --network polygonmumbai 0xb5c48a03709aA95a7cB353020380407147F84d9F 'DelegatedShare' 'EPM' 5 500000",
-        "verify-plugin": "hardhat verify --network polygonmumbai 0xE2816117bB0792eef649195b9e3C834105323118 'basic1INCH' 'basic1INCH' 0xb5c48a03709aA95a7cB353020380407147F84d9F",
-        "lint:js": "eslint .",
-        "lint:js:fix": "eslint . --fix",
-        "lint:sol": "solhint --max-warnings 0 \"contracts/**/*.sol\"",
-        "lint:sol:fix": "solhint --max-warnings 0 \"contracts/**/*.sol\" --fix",
-        "lint": "yarn run lint:js && yarn run lint:sol",
-        "lint:fix": "yarn run lint:js:fix && yarn run lint:sol:fix"
+        "verify": "hardhat verify --network polygonmumbai 0xb5c48a03709aA95a7cB353020380407147F84d9F 'CompanyStock' 'COM' 5 500000",
+        "verify-plugin": "hardhat verify --network polygonmumbai 0xE2816117bB0792eef649195b9e3C834105323118 'DividendDispatcher' 'DDP' 0xb5c48a03709aA95a7cB353020380407147F84d9F"
+       
     }
 }

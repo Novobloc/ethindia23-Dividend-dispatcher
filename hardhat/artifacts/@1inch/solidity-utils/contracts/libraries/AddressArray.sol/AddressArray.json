@@ -1,0 +1,26 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "AddressArray",
+  "sourceName": "@1inch/solidity-utils/contracts/libraries/AddressArray.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "IndexOutOfBounds",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "OutputArrayTooSmall",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "PopFromEmptyArray",
+      "type": "error"
+    }
+  ],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212208924afe1fe3a5e1be4edd1be62c50c292cabe306832e8013028f81f04527e3c464736f6c63430008130033",
+  "deployedBytecode": "0x600080fdfea26469706673582212208924afe1fe3a5e1be4edd1be62c50c292cabe306832e8013028f81f04527e3c464736f6c63430008130033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
