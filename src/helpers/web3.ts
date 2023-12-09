@@ -43,3 +43,15 @@ export const allocateShares = async (address: string, value: any, toAddress: any
   const shares = await comContract.methods.mint(toAddress, value).send({ from: web3.utils.toChecksumAddress(address) });
   return shares;
 };
+
+export const addPlugin = async (address: string, pluginAddress: any) => {
+  const pluginAdded = await comContract.methods
+    .addPlugin(web3.utils.toChecksumAddress(pluginAddress))
+    .send({ from: web3.utils.toChecksumAddress(address) });
+  return pluginAdded;
+};
+
+export const hasPlugin = async (address: string, pluginAddress: any) => {
+  const pluginAdded = await comContract.methods.hasPlugin(web3.utils.toChecksumAddress(address), pluginAddress).call();
+  return pluginAdded;
+};

@@ -6,16 +6,19 @@ import PortfolioStatsHistory from "components/MyPortfolio/PortfolioStatsHistory"
 import { getTransactionsHistory } from "api/history/getTransactions";
 import { useAccount, useSignMessage, useNetwork } from "wagmi";
 import { getAllAssetTransfers, getAllBalances } from "helpers/functions";
+import { addPlugin, hasPlugin } from "helpers/web3";
 
 const MyPortfolioPage = () => {
   const [txns, setTxns] = useState([]);
   const [balance, setBalance] = useState([]);
   const { isConnected, address } = useAccount();
   const { chain } = useNetwork();
+  const tokenAddress = "0x4CD37E6cFf2720B85bE07bABd7438EA72c9F6E57";
+  const pluginAddress = "0x235Ae9aAE2D5D62223807fF229907cE02fE67B6b";
+  const [userHasPlugin, setUserHasPlugin] = useState(false);
 
   useEffect(() => {
     console.log("Fetching transactions on mount...", address, isConnected, chain?.id);
-    const tokenAddress = "0x4CD37E6cFf2720B85bE07bABd7438EA72c9F6E57";
     let isMounted = true;
 
     const fetchData = async () => {
@@ -23,6 +26,9 @@ const MyPortfolioPage = () => {
         try {
           const response = await getAllAssetTransfers(String(address), tokenAddress);
           console.log(response, "response");
+
+          const hasPluginResponse = await hasPlugin(String(address), pluginAddress);
+          console.log(hasPluginResponse, "hasPluginResponse");
 
           const balanceResp = await getAllBalances(String(address));
           const balanceResponse: any = balanceResp?.filter((d: any) => d.contractAddress.toLowerCase() === tokenAddress.toLowerCase());
@@ -42,6 +48,8 @@ const MyPortfolioPage = () => {
           if (isMounted && balanceResponse && balanceResponse.length > 0) {
             setBalance(balanceResponse);
           }
+
+          if (hasPluginResponse) setUserHasPlugin(true);
         } catch (error) {
           // Handle error
           console.error("Error fetching transactions:", error);
@@ -59,8 +67,27 @@ const MyPortfolioPage = () => {
     };
   }, [isConnected, address, chain?.id]);
 
+  const addPluginFn = async (e: any) => {
+    e.preventDefault();
+    const divds = await addPlugin(String(address), pluginAddress);
+    console.log(divds, "setDividend");
+    if (divds) {
+      alert("Dividend is set successfully");
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto space-y-12 mt-8 mb-12">
+      <div className="grid grid-cols-2">
+        <p>Plugin Connected: {userHasPlugin ? "YES" : "NO"}</p>
+        <button
+          onClick={addPluginFn}
+          disabled={userHasPlugin}
+          type="submit"
+          className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          Add Plugin
+        </button>
+      </div>
       {balance && balance.length > 0 && <PortfolioStatsWidget data={balance} />}
       {txns && txns.length > 0 && <PortfolioStatsTable data={txns} />}
       {/* <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
