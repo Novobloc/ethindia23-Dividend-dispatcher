@@ -6,15 +6,6 @@ import { getTransactionsHistory } from "api/history/getTransactions";
 import { getTokenList } from "api/tokens/getTokenList";
 
 const PortfolioStatsHistory = () => {
-  useEffect(() => {
-    (async () => {
-      // const data = await getTransactionsHistory("0x5B4d77e199FE8e5090009C72d2a5581C74FEbE89");
-      // console.log(data, "data");
-      // const data = await getTokenList("137");
-      // console.log(data, "data");
-    })();
-  }, []);
-
   return (
     <Card extra={"mt-3 !z-5 overflow-hidden"}>
       <div className="flex items-center justify-between rounded-t-3xl p-3">

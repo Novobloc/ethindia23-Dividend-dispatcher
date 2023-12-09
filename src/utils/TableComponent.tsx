@@ -8,15 +8,24 @@ import { createColumnHelper, flexRender, getCoreRowModel, getSortedRowModel, Sor
 
 const columnHelper = createColumnHelper<any>();
 
-// const columns = columnsDataCheck;
 export default function ComplexTable(props: { tableData: any }) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState<SortingState>([]);
   let defaultData = tableData;
   const columns = [
-    columnHelper.accessor("name", {
-      id: "name",
-      header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">NAME</p>,
+    columnHelper.accessor("details.chainId", {
+      id: "chainId",
+      header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">Chain ID</p>,
+      cell: (info: { getValue: () => string | number }) => <p className="text-sm font-bold text-navy-700 dark:text-white">{info.getValue()}</p>
+    }),
+    columnHelper.accessor("details.direction", {
+      id: "direction",
+      header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">Direction</p>,
+      cell: (info: { getValue: () => string | number }) => <p className="text-sm font-bold text-navy-700 dark:text-white">{info.getValue()}</p>
+    }),
+    columnHelper.accessor("details.amount", {
+      id: "amount",
+      header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">Amount</p>,
       cell: (info: {
         getValue: () =>
           | string
@@ -29,7 +38,7 @@ export default function ComplexTable(props: { tableData: any }) {
           | undefined;
       }) => <p className="text-sm font-bold text-navy-700 dark:text-white">{info.getValue()}</p>
     }),
-    columnHelper.accessor("status", {
+    columnHelper.accessor("details.status", {
       id: "status",
       header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">STATUS</p>,
       cell: (info: {
@@ -43,7 +52,7 @@ export default function ComplexTable(props: { tableData: any }) {
           | undefined;
       }) => (
         <div className="flex items-center">
-          {info.getValue() === "Approved" ? (
+          {info.getValue() === "completed" ? (
             <MdCheckCircle className="text-green-500 me-1 dark:text-green-300" />
           ) : info.getValue() === "Disable" ? (
             <MdCancel className="text-red-500 me-1 dark:text-red-300" />
@@ -54,9 +63,9 @@ export default function ComplexTable(props: { tableData: any }) {
         </div>
       )
     }),
-    columnHelper.accessor("date", {
-      id: "date",
-      header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">DATE</p>,
+    columnHelper.accessor("details.type", {
+      id: "type",
+      header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">Type</p>,
       cell: (info: {
         getValue: () =>
           | string
@@ -68,15 +77,6 @@ export default function ComplexTable(props: { tableData: any }) {
           | null
           | undefined;
       }) => <p className="text-sm font-bold text-navy-700 dark:text-white">{info.getValue()}</p>
-    }),
-    columnHelper.accessor("progress", {
-      id: "progress",
-      header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">PROGRESS</p>,
-      cell: (info: { getValue: () => any }) => (
-        <div className="flex items-center">
-          <Progress width="w-[108px]" value={info.getValue()} />
-        </div>
-      )
     })
   ]; // eslint-disable-next-line
   const [data, setData] = React.useState(() => [...defaultData]);
