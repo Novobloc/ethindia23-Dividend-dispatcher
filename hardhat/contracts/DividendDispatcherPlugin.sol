@@ -36,7 +36,10 @@ contract DividendDispatcherPlugin is IDividendDispatcherPlugin, Plugin, ERC20, O
     claimedDividend[msg.sender] = true;
     uint256 dividend = (ledger[msg.sender] / totalSubscribedSupply) * 100 * totalDividendPool;
     totalClaimedDividend += dividend;
-    _mint(msg.sender, dividend);
+    // _mint(msg.sender, dividend);
+    address addr = msg.sender;
+    address payable wallet = payable(addr);
+    wallet.transfer(dividend);
   }
 
   function _updateBalances(address from, address to, uint256 amount) internal override {
