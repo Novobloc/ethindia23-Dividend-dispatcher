@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "App";
+import App from "./App";
 import "./index.css";
 import { GlobalProvider, useGlobalContext } from "context/GlobalContext/GlobalContext";
 import "@rainbow-me/rainbowkit/styles.css";
