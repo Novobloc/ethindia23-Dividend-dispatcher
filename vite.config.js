@@ -9,6 +9,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      api: "/src/api",
       pages: "/src/pages",
       layouts: "/src/layouts",
       assets: "/src/assets",
@@ -21,6 +22,6 @@ export default defineConfig({
   },
   plugins: [react(), tailwindcss(), svgr({ svgrOptions: { icon: true } })],
   server: {
-    port: 3000
+    port: 3001
   }
 });
