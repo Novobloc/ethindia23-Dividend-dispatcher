@@ -5,46 +5,54 @@ import PortfolioStatsLineChart from "components/MyPortfolio/PortfolioStatsLineCh
 import PortfolioStatsHistory from "components/MyPortfolio/PortfolioStatsHistory";
 import { getTransactionsHistory } from "api/history/getTransactions";
 import { useAccount, useSignMessage, useNetwork } from "wagmi";
+import { getAllAssetTransfers, getAllBalances } from "helpers/functions";
 
 const MyPortfolioPage = () => {
   const [txns, setTxns] = useState([]);
+  const [balance, setBalance] = useState([]);
   const { isConnected, address } = useAccount();
   const { chain } = useNetwork();
 
   useEffect(() => {
     console.log("Fetching transactions on mount...", address, isConnected, chain);
-    // const tokenAddress = "0x3Bd86E4b4bf781C1bb3401bF5AEE7aa0d34EA8Fb";
-    // let isMounted = true;
+    const tokenAddress = "0x4CD37E6cFf2720B85bE07bABd7438EA72c9F6E57";
+    let isMounted = true;
 
-    // const fetchData = async () => {
-    //   if (isConnected) {
-    //     try {
-    //       const data: any = await getTransactionsHistory(address, chain?.id, tokenAddress);
-    //       const response = data?.items.map((i: any) => {
-    //         i.details = { ...i.details, ...i.details.tokenActions[0] };
-    //         return i;
-    //       });
+    const fetchData = async () => {
+      if (isConnected) {
+        try {
+          const response = await getAllAssetTransfers(String(address), tokenAddress);
+          console.log(response, "response");
 
-    //       console.log(response, "response");
+          const balance = await getAllBalances(String(address));
+          console.log(balance, "balance");
 
-    //       if (isMounted && response && response.length > 0) {
-    //         setTxns(response);
-    //       }
-    //     } catch (error) {
-    //       // Handle error
-    //       console.error("Error fetching transactions:", error);
-    //     }
-    //   }
-    // };
+          // const data: any = await getTransactionsHistory(address, chain?.id, tokenAddress);
+          // const response = data?.items.map((i: any) => {
+          //   i.details = { ...i.details, ...i.details.tokenActions[0] };
+          //   return i;
+          // });
 
-    // if (isConnected) {
-    //   fetchData();
-    // }
+          // console.log(response, "response");
 
-    // // Cleanup function
-    // return () => {
-    //   isMounted = false;
-    // };
+          if (isMounted && response && response.length > 0) {
+            setTxns(response);
+          }
+        } catch (error) {
+          // Handle error
+          console.error("Error fetching transactions:", error);
+        }
+      }
+    };
+
+    if (isConnected) {
+      fetchData();
+    }
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+    };
   }, [isConnected, address, chain?.id]);
 
   return (
