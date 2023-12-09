@@ -2,7 +2,6 @@ import React from "react";
 import Widget from "utils/WidgetComponent";
 import { MdBarChart, MdDashboard } from "react-icons/md";
 import { IoDocuments } from "react-icons/io5";
-import { IoMdHome } from "react-icons/io";
 
 const PortfolioStatsWidget = ({ data }: any) => {
   console.log(data, "PortfolioStatsWidget");
@@ -13,9 +12,6 @@ const PortfolioStatsWidget = ({ data }: any) => {
         <Widget icon={<MdBarChart className="h-7 w-7" />} title={"Shares"} subtitle={"$340.5"} />
         <Widget icon={<IoDocuments className="h-6 w-6" />} title={"My Shares %"} subtitle={"$642.39"} />
         <Widget icon={<MdBarChart className="h-7 w-7" />} title={"Dividend"} subtitle={"$574.34"} />
-        {/* <Widget icon={<MdDashboard className="h-6 w-6" />} title={"Claimed"} subtitle={"$1,000"} /> */}
-        {/* <Widget icon={<MdBarChart className="h-7 w-7" />} title={"New Tasks"} subtitle={"145"} />
-        <Widget icon={<IoMdHome className="h-6 w-6" />} title={"Total Projects"} subtitle={"$2433"} /> */}
       </div>
     </div>
   );

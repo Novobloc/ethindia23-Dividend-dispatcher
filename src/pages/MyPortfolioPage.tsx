@@ -78,22 +78,18 @@ const MyPortfolioPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto space-y-12 mt-8 mb-12">
-      <div className="grid grid-cols-2">
-        <p>Plugin Connected: {userHasPlugin ? "YES" : "NO"}</p>
+      <div className="grid grid-cols-1">
+        {/* <p>Plugin Connected: {userHasPlugin ? "YES" : "NO"}</p> */}
         <button
           onClick={addPluginFn}
           disabled={userHasPlugin}
           type="submit"
-          className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-          Add Plugin
+          className="flex items-center justify-center w-full px-6 py-3 mb-3 text-lg text-black rounded-md sm:mb-0 bg-yellow-300">
+          {!userHasPlugin ? " Add Plugin" : "Plugin Connected"}
         </button>
       </div>
       {balance && balance.length > 0 && <PortfolioStatsWidget data={balance} />}
       {txns && txns.length > 0 && <PortfolioStatsTable data={txns} />}
-      {/* <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
-        <PortfolioStatsLineChart />
-        <PortfolioStatsHistory />
-      </div> */}
     </div>
   );
 };
