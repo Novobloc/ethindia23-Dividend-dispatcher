@@ -8,7 +8,6 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config: any | Promise<InternalAxiosRequestConfig<any>>) => {
     const accessToken = String(import.meta.env.VITE_1INCH_API_KEY);
-    console.log(accessToken, '"acc');
 
     const headers = {
       Accept: "application/json, text/plain, */*",

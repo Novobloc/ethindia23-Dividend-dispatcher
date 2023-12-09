@@ -3,12 +3,15 @@ import { FaEthereum } from "react-icons/fa";
 import Card from "utils/card";
 import { historyData } from "constants/mockData";
 import { getTransactionsHistory } from "api/history/getTransactions";
+import { getTokenList } from "api/tokens/getTokenList";
 
 const PortfolioStatsHistory = () => {
   useEffect(() => {
     (async () => {
-      const data = await getTransactionsHistory("0x5B4d77e199FE8e5090009C72d2a5581C74FEbE89");
-      console.log(data, "data");
+      // const data = await getTransactionsHistory("0x5B4d77e199FE8e5090009C72d2a5581C74FEbE89");
+      // console.log(data, "data");
+      // const data = await getTokenList("137");
+      // console.log(data, "data");
     })();
   }, []);
 
