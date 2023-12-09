@@ -589,8 +589,8 @@
       ]
     },
     "/Users/shivakumarmangina/Desktop/1inch/ethindia23-1inch/hardhat/contracts/DividendDispatcherPlugin.sol": {
-      "lastModificationDate": 1702131489426,
-      "contentHash": "2cdbde8689add5a2813621ffac1bf05d",
+      "lastModificationDate": 1702142609549,
+      "contentHash": "b9618aac23dd82daaf96435f34ad2302",
       "sourceName": "contracts/DividendDispatcherPlugin.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -628,7 +628,8 @@
         "@1inch/token-plugins/contracts/Plugin.sol",
         "@1inch/token-plugins/contracts/interfaces/IERC20Plugins.sol",
         "./interfaces/IDividendDispatcherPlugin.sol",
-        "@openzeppelin/contracts/access/Ownable.sol"
+        "@openzeppelin/contracts/access/Ownable.sol",
+        "@openzeppelin/contracts/utils/math/SafeMath.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
@@ -726,6 +727,49 @@
       ],
       "artifacts": [
         "Ownable"
+      ]
+    },
+    "/Users/shivakumarmangina/Desktop/1inch/ethindia23-1inch/hardhat/node_modules/@openzeppelin/contracts/utils/math/SafeMath.sol": {
+      "lastModificationDate": 1702118959972,
+      "contentHash": "f6f4fda16c536e57069af40a245c985e",
+      "sourceName": "@openzeppelin/contracts/utils/math/SafeMath.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000000
+          },
+          "viaIR": true,
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "devdoc",
+                "userdoc",
+                "storageLayout",
+                "evm.gasEstimates"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          },
+          "metadata": {
+            "useLiteralContent": true
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "SafeMath"
       ]
     }
   }

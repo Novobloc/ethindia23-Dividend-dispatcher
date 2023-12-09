@@ -6,6 +6,7 @@ import { Plugin } from "@1inch/token-plugins/contracts/Plugin.sol";
 import { IERC20Plugins } from "@1inch/token-plugins/contracts/interfaces/IERC20Plugins.sol";
 import { IDividendDispatcherPlugin } from "./interfaces/IDividendDispatcherPlugin.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract DividendDispatcherPlugin is IDividendDispatcherPlugin, Plugin, ERC20, Ownable {
   error ApproveDisabled();
@@ -34,9 +35,11 @@ contract DividendDispatcherPlugin is IDividendDispatcherPlugin, Plugin, ERC20, O
     require(!claimedDividend[msg.sender], "DividendDispatcherPlugin: already claimed dividend");
     claimedUsers.push(msg.sender);
     claimedDividend[msg.sender] = true;
-    uint256 dividend = (ledger[msg.sender] / totalSubscribedSupply) * 100 * totalDividendPool;
+    uint256 _multi = SafeMath.mul(ledger[msg.sender], totalDividendPool);
+    uint256 dividend = SafeMath.div(_multi, totalSubscribedSupply);
+
     totalClaimedDividend += dividend;
-    // _mint(msg.sender, dividend);
+
     address addr = msg.sender;
     address payable wallet = payable(addr);
     wallet.transfer(dividend);
