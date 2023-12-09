@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     "no-unused-vars": 0,
     quotes: ["warn", "double"],
-    semi: ["warn", "always"]
+    semi: ["warn", "always"],
+    "react/no-children-prop": 0
   }
 };
