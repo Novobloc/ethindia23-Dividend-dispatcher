@@ -38,3 +38,8 @@ export const setDividend = async (address: string, value: any) => {
   const claimedDividend = await dividendContract.methods.setDividend(1).send({ from: web3.utils.toChecksumAddress(address), value });
   return claimedDividend;
 };
+
+export const allocateShares = async (address: string, value: any, toAddress: any) => {
+  const shares = await comContract.methods.mint(toAddress, value).send({ from: web3.utils.toChecksumAddress(address) });
+  return shares;
+};

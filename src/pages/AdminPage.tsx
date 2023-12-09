@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getCurrentTotalSupply, getLedger, getCurrentTotalClaimedDividend, hasUserClaimedDividend, setDividend } from "helpers/web3";
+import { getCurrentTotalSupply, getLedger, getCurrentTotalClaimedDividend, hasUserClaimedDividend, setDividend, allocateShares } from "helpers/web3";
 import { useAccount, useSignMessage, useNetwork, useContractWrite } from "wagmi";
 
 export default function Example() {
@@ -10,6 +10,8 @@ export default function Example() {
   const { chain } = useNetwork();
   const { signMessage, data, isSuccess } = useSignMessage();
   const [value, setValue]: any = useState();
+  const [mintValue, setMintValue]: any = useState();
+  const [mintAddress, setMintAddress]: any = useState();
 
   useEffect(() => {
     console.log("Fetching transactions on mount...", address, isConnected, chain?.id);
@@ -57,6 +59,18 @@ export default function Example() {
     }
   };
 
+  const allocateSharesFunction = async (e: any) => {
+    e.preventDefault();
+    console.log("allocateSharesFunction", mintValue, mintAddress);
+    const shs = await allocateShares(String(address), mintValue, mintAddress);
+    console.log(shs, "allocateSharesFunction", mintValue, mintAddress);
+    if (shs) {
+      setMintAddress(null);
+      setMintValue(null);
+      alert("Minted successfully");
+    }
+  };
+
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="absolute inset-x-0  -z-10 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
@@ -73,7 +87,7 @@ export default function Example() {
         <p className="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div>
+        <div className="space-y-4">
           <div>
             <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
               Address
@@ -81,6 +95,22 @@ export default function Example() {
             <div className="mt-2.5">
               <input
                 type="text"
+                onChange={(e: any) => setMintAddress(e.target.value)}
+                name="last-name"
+                id="last-name"
+                autoComplete="family-name"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+              No of Shares
+            </label>
+            <div className="mt-2.5">
+              <input
+                type="number"
+                onChange={(e: any) => setMintValue(e.target.value)}
                 name="last-name"
                 id="last-name"
                 autoComplete="family-name"
@@ -91,6 +121,7 @@ export default function Example() {
         </div>
         <div className="mt-10">
           <button
+            onClick={allocateSharesFunction}
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             Mint
