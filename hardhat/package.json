@@ -1,49 +1,43 @@
 {
-    "name": "dividend-dispatcher-plugin",
-    "version": "1.0.1",
-    "description": "Set of contracts for delegating incentives",
-    "homepage": "https://github.com/1inch/delegating#readme",
-    "author": "1inch",
-    "files": [
-        "contracts/interfaces/*.sol",
-        "contracts/*.sol"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:1inch/delegating.git"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "@1inch/token-plugins": "1.1.2",
-        "@1inch/farming": "3.0.2",
-        "@1inch/solidity-utils": "3.0.1",
-        "@openzeppelin/contracts": "4.9.2",
-        "hardhat-dependency-compiler": "1.1.3"
-    },
-    "devDependencies": {
-        "@nomicfoundation/hardhat-chai-matchers": "2.0.1",
-        "@nomicfoundation/hardhat-ethers": "3.0.4",
-        "@nomicfoundation/hardhat-verify": "1.0.4",
-        "chai": "4.3.7",
-        "dotenv": "16.3.1",
-        "eslint": "8.45.0",
-        "eslint-config-standard": "17.1.0",
-        "eslint-plugin-import": "2.27.5",
-        "eslint-plugin-n": "16.0.1",
-        "eslint-plugin-promise": "6.1.1",
-        "ethers": "6.6.5",
-        "hardhat": "2.17.0",
-        "hardhat-deploy": "0.11.34",
-        "hardhat-gas-reporter": "1.0.9",
-        "rimraf": "5.0.1",
-        "solhint": "3.4.1",
-        "solidity-coverage": "0.8.4"
-    },
-    "scripts": {
-        "compile": "hardhat compile",
-        "deploy": "hardhat run --network polygonmumbai scripts/deploy.js",
-        "verify": "hardhat verify --network polygonmumbai 0xb5c48a03709aA95a7cB353020380407147F84d9F 'CompanyStock' 'COM' 5 500000",
-        "verify-plugin": "hardhat verify --network polygonmumbai 0xE2816117bB0792eef649195b9e3C834105323118 'DividendDispatcher' 'DDP' 0xb5c48a03709aA95a7cB353020380407147F84d9F"
-       
-    }
+  "name": "dividend-dispatcher-plugin",
+  "version": "1.0.1",
+  "description": "Set of contracts for dispatching dividends",
+  "author": "novobloc",
+  "files": [
+    "contracts/interfaces/*.sol",
+    "contracts/*.sol"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@1inch/token-plugins": "1.1.2",
+    "@1inch/farming": "3.0.2",
+    "@1inch/solidity-utils": "3.0.1",
+    "@openzeppelin/contracts": "4.9.2",
+    "hardhat-dependency-compiler": "1.1.3"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "2.0.1",
+    "@nomicfoundation/hardhat-ethers": "3.0.4",
+    "@nomicfoundation/hardhat-verify": "1.0.4",
+    "chai": "4.3.7",
+    "dotenv": "16.3.1",
+    "eslint": "8.45.0",
+    "eslint-config-standard": "17.1.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-n": "16.0.1",
+    "eslint-plugin-promise": "6.1.1",
+    "ethers": "6.6.5",
+    "hardhat": "2.17.0",
+    "hardhat-deploy": "0.11.34",
+    "hardhat-gas-reporter": "1.0.9",
+    "rimraf": "5.0.1",
+    "solhint": "3.4.1",
+    "solidity-coverage": "0.8.4"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy": "hardhat run --network polygonmumbai scripts/deploy.js",
+    "verify": "hardhat verify --network polygonmumbai 0xb5c48a03709aA95a7cB353020380407147F84d9F 'CompanyStock' 'COM' 5 500000",
+    "verify-plugin": "hardhat verify --network polygonmumbai 0xE2816117bB0792eef649195b9e3C834105323118 'DividendDispatcher' 'DDP' 0xb5c48a03709aA95a7cB353020380407147F84d9F"
+  }
 }
