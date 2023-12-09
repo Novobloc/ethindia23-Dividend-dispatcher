@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@alch/alchemy-web3": "^1.4.7",
     "@headlessui/react": "^1.6.0",
     "@heroicons/react": "^2.0.3",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",

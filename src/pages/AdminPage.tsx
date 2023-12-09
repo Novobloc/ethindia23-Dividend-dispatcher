@@ -1,7 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getCurrentTotalSupply, getLedger, getCurrentTotalClaimedDividend, hasUserClaimedDividend, setDividend } from "helpers/web3";
+import { useAccount, useSignMessage, useNetwork, useContractWrite } from "wagmi";
 
 export default function Example() {
   const [agreed, setAgreed] = useState(false);
+  const [txns, setTxns] = useState([]);
+  const [balance, setBalance] = useState([]);
+  const { isConnected, address, status } = useAccount();
+  const { chain } = useNetwork();
+  const { signMessage, data, isSuccess } = useSignMessage();
+  const [value, setValue]: any = useState();
+
+  useEffect(() => {
+    console.log("Fetching transactions on mount...", address, isConnected, chain?.id);
+    let isMounted = true;
+
+    const fetchData = async () => {
+      if (isConnected) {
+        try {
+          const ledgerRes = await getLedger(String(address));
+          console.log(ledgerRes, "ledgerRes");
+
+          const currentTotalSupplyRes = await getCurrentTotalSupply();
+          console.log(currentTotalSupplyRes, "currentTotalSupplyRes");
+
+          const totalClaimedDividendRes = await getCurrentTotalClaimedDividend();
+          console.log(totalClaimedDividendRes, "totalClaimedDividendRes");
+
+          const hasUserClaimedDividendRes = await hasUserClaimedDividend(String(address));
+          console.log(hasUserClaimedDividendRes, "hasUserClaimedDividendRes");
+
+          // signMessage({ message: "aasasa" });
+        } catch (error) {
+          console.error("Error fetching transactions:", error);
+        }
+      }
+    };
+
+    if (isConnected) {
+      fetchData();
+    }
+
+    // Cleanup function
+    return () => {
+      isMounted = false;
+    };
+  }, [isConnected, address, chain?.id]);
+
+  const setDividendFunction = async (e: any) => {
+    e.preventDefault();
+    const divds = await setDividend(String(address), value);
+    console.log(divds, "setDividend", value);
+    if (divds.status) {
+      setValue(null);
+      alert("Dividend is set successfully");
+    }
+  };
 
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
@@ -19,10 +73,10 @@ export default function Example() {
         <p className="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div className="">
+        <div>
           <div>
             <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Mint
+              Address
             </label>
             <div className="mt-2.5">
               <input
@@ -44,14 +98,15 @@ export default function Example() {
         </div>
       </form>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div className="">
+        <div>
           <div>
             <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Mint
+              Value
             </label>
             <div className="mt-2.5">
               <input
-                type="text"
+                type="number"
+                onChange={(e: any) => setValue(e.target.value)}
                 name="last-name"
                 id="last-name"
                 autoComplete="family-name"
@@ -63,8 +118,9 @@ export default function Example() {
         <div className="mt-10">
           <button
             type="submit"
+            onClick={setDividendFunction}
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            Set Divident
+            Set Dividend
           </button>
         </div>
       </form>
