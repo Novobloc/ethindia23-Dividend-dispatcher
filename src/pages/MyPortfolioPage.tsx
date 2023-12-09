@@ -14,7 +14,7 @@ const MyPortfolioPage = () => {
   const { chain } = useNetwork();
 
   useEffect(() => {
-    console.log("Fetching transactions on mount...", address, isConnected, chain);
+    console.log("Fetching transactions on mount...", address, isConnected, chain?.id);
     const tokenAddress = "0x4CD37E6cFf2720B85bE07bABd7438EA72c9F6E57";
     let isMounted = true;
 
@@ -24,8 +24,8 @@ const MyPortfolioPage = () => {
           const response = await getAllAssetTransfers(String(address), tokenAddress);
           console.log(response, "response");
 
-          const balance = await getAllBalances(String(address));
-          console.log(balance, "balance");
+          const balanceResp = await getAllBalances(String(address));
+          const balanceResponse: any = balanceResp?.filter((d: any) => d.contractAddress.toLowerCase() === tokenAddress.toLowerCase());
 
           // const data: any = await getTransactionsHistory(address, chain?.id, tokenAddress);
           // const response = data?.items.map((i: any) => {
@@ -37,6 +37,10 @@ const MyPortfolioPage = () => {
 
           if (isMounted && response && response.length > 0) {
             setTxns(response);
+          }
+
+          if (isMounted && balanceResponse && balanceResponse.length > 0) {
+            setBalance(balanceResponse);
           }
         } catch (error) {
           // Handle error
@@ -57,7 +61,7 @@ const MyPortfolioPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto space-y-12 mt-8 mb-12">
-      <PortfolioStatsWidget />
+      {balance && balance.length > 0 && <PortfolioStatsWidget data={balance} />}
       {txns && txns.length > 0 && <PortfolioStatsTable data={txns} />}
       {/* <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
         <PortfolioStatsLineChart />
