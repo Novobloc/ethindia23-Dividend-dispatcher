@@ -3,6 +3,7 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "assets/logo.png";
 import { Link } from "react-router-dom";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Header() {
   const navigation = [
@@ -39,11 +40,12 @@ export default function Header() {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <button
+          {/* <button
             disabled={false}
             className="flex w-44 justify-center font-extralight bg-black   rounded-md  border border-transparent  py-1 px-0 text-base text-white shadow hover:bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-1 focus:ring-offset-slate-500">
             Connect Wallet
-          </button>
+          </button> */}
+          <ConnectButton accountStatus="address" label="Connect Wallet" />{" "}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
