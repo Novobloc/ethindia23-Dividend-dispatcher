@@ -5,7 +5,8 @@ import tailwindcss from "tailwindcss";
 
 export default defineConfig({
   define: {
-    "process.env": {}
+    "process.env": {},
+    global: {}
   },
   resolve: {
     alias: {
