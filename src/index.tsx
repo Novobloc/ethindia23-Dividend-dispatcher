@@ -6,12 +6,12 @@ import { GlobalProvider, useGlobalContext } from "context/GlobalContext/GlobalCo
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, base, polygonMumbai } from "wagmi/chains";
+import { mainnet, polygon, optimism, arbitrum, base, polygonMumbai, polygonZkEvmTestnet } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 
 const { chains, publicClient } = configureChains(
-  [polygonMumbai, mainnet, polygon, optimism, arbitrum, base],
+  [polygonMumbai, mainnet, polygon, optimism, arbitrum, base, polygonZkEvmTestnet],
   [alchemyProvider({ apiKey: String(import.meta.env.VITE_ALCHEMY_ID) }), publicProvider()]
 );
 
