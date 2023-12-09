@@ -8,7 +8,6 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 export default function Header() {
   const navigation = [
     { name: "My Portfolio", href: "/portfolio/user" },
-    { name: "Portfolio", href: "/portfolio" },
     { name: "Admin", href: "/admin" }
   ];
 

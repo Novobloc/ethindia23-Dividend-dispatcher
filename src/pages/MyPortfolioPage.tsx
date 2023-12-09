@@ -26,10 +26,10 @@ const MyPortfolioPage = () => {
     <div className="max-w-7xl mx-auto space-y-12 mt-8 mb-12">
       <PortfolioStatsWidget />
       {txns && txns.length > 0 && <PortfolioStatsTable data={txns} />}
-      <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+      {/* <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
         <PortfolioStatsLineChart />
         <PortfolioStatsHistory />
-      </div>
+      </div> */}
     </div>
   );
 };
