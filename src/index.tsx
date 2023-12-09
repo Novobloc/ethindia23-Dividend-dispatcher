@@ -12,12 +12,12 @@ import { publicProvider } from "wagmi/providers/public";
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, base, zora],
-  [alchemyProvider({ apiKey: String(process.env.REACT_APP_ALCHEMY_ID) }), publicProvider()]
+  [alchemyProvider({ apiKey: String(import.meta.env.VITE_ALCHEMY_ID) }), publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
   appName: "My RainbowKit App",
-  projectId: String(process.env.REACT_APP_WALLET_CONNECT_PROJECT_ID),
+  projectId: String(import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID),
   chains
 });
 
