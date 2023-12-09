@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "AddressSet",
+  "sourceName": "@1inch/solidity-utils/contracts/libraries/AddressSet.sol",
+  "abi": [],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea26469706673582212204252ff36d8515be4b2a5793abf4d11f1be29038f4a5e03ca6de50da6b459278c64736f6c63430008130033",
+  "deployedBytecode": "0x600080fdfea26469706673582212204252ff36d8515be4b2a5793abf4d11f1be29038f4a5e03ca6de50da6b459278c64736f6c63430008130033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

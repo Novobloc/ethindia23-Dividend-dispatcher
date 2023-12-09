@@ -6,8 +6,7 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { IPlugin } from "@1inch/token-plugins/contracts/interfaces/IPlugin.sol";
 
 interface IDividendDispatcherPlugin is IPlugin, IERC20 {
-    event Delegated(address account, address delegatee);
+  function setDividend(uint256 value) external payable;
 
-    function delegated(address delegator) external view returns(address delegatee);
-    function delegate(address delegatee) external;
+  function claimDividend() external;
 }
