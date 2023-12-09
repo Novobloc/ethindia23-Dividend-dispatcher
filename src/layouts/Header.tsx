@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const navigation = [
-    { name: "Product", href: "#" },
-    { name: "Features", href: "#" },
-    { name: "Marketplace", href: "#" },
-    { name: "Company", href: "#" }
+    { name: "My Portfolio", href: "/portfolio/user" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Admin", href: "/admin" }
   ];
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,10 +17,10 @@ export default function Header() {
     <header className="bg-white">
       <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
+          <Link to="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">1inch</span>
             <img className="h-8 w-auto" src={Logo} alt="" />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -33,9 +33,9 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+            <Link key={item.name} to={item.href} className="text-sm font-semibold leading-6 text-gray-900">
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
