@@ -40,7 +40,7 @@ export default function Header() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <Link key={item.name} to={item.href} className="text-xs font-semibold uppercase leading-6 text-slate-900">
+              <Link key={item.name} to={item.href} className="text-xs p-1 font-semibold uppercase leading-6 text-slate-900 hover:bg-yellow-100">
                 {item.name}
               </Link>
             ))}
@@ -69,7 +69,7 @@ export default function Header() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:underline">
                       {item.name}
                     </a>
                   ))}
