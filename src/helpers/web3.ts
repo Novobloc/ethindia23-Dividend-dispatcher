@@ -8,8 +8,9 @@ const web3 = createAlchemyWeb3(API_URL);
 
 const chain: any = localStorage.getItem("chainId");
 console.log(chain, "chain");
-const contractAddressCom = activeConfig(chain?.id)?.tokenContractAddress;
-const contractAddressDividend = activeConfig(chain?.id)?.pluginAddress;
+const contractAddressCom = activeConfig(chain)?.tokenContractAddress;
+const contractAddressDividend = activeConfig(chain)?.pluginContractAddress;
+console.log(activeConfig(chain), "activeConfig(chain?.id)");
 
 export const comContract = new web3.eth.Contract(contractABICom, contractAddressCom);
 export const dividendContract = new web3.eth.Contract(contractABIDividend, contractAddressDividend);
@@ -40,7 +41,8 @@ export const hasUserClaimedDividend = async (address: string) => {
 };
 
 export const setDividend = async (address: string, value: any) => {
-  const claimedDividend = await dividendContract.methods.setDividend(1).send({ from: web3.utils.toChecksumAddress(address), value });
+  console.log(address, "setting dividend.........");
+  const claimedDividend = await dividendContract.methods.setDividend(value).send({ from: web3.utils.toChecksumAddress(address), value });
   return claimedDividend;
 };
 
@@ -50,11 +52,18 @@ export const allocateShares = async (address: string, value: any, toAddress: any
 };
 
 export const addPlugin = async (address: string, pluginAddress: any) => {
-  console.log(address, pluginAddress);
+  console.log(address, pluginAddress, "adding plugin..............");
 
   const pluginAdded = await comContract.methods
     .addPlugin(web3.utils.toChecksumAddress(pluginAddress))
     .send({ from: web3.utils.toChecksumAddress(address) });
+  return pluginAdded;
+};
+
+export const claimDividend = async (address: string) => {
+  console.log(address, "claiming.........");
+
+  const pluginAdded = await dividendContract.methods.claimDividend().send({ from: web3.utils.toChecksumAddress(address) });
   return pluginAdded;
 };
 
