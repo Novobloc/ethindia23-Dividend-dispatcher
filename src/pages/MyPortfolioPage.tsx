@@ -6,7 +6,7 @@ import PortfolioStatsHistory from "components/MyPortfolio/PortfolioStatsHistory"
 import { getTransactionsHistory } from "api/history/getTransactions";
 import { useAccount, useSignMessage, useNetwork } from "wagmi";
 import { getAllAssetTransfers, getAllBalances } from "helpers/functions";
-import { addPlugin, hasPlugin } from "helpers/web3";
+import { addPlugin, claimDividend, hasPlugin } from "helpers/web3";
 import { activeConfig } from "../Config";
 
 const MyPortfolioPage = () => {
@@ -91,9 +91,23 @@ const MyPortfolioPage = () => {
     }
   };
 
+  const claimDividendFn = async (e: any) => {
+    e.preventDefault();
+    try {
+      const result = await claimDividend(String(address));
+      console.log(result, "addPlugin");
+
+      if (result) {
+        alert("Plugin added successfully");
+      }
+    } catch (error) {
+      console.error("Error adding plugin:", error);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto space-y-12 mt-8 mb-12">
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-2 space-x-2">
         {/* <p>Plugin Connected: {userHasPlugin ? "YES" : "NO"}</p> */}
         <button
           onClick={addPluginFn}
@@ -101,6 +115,12 @@ const MyPortfolioPage = () => {
           type="submit"
           className="flex items-center justify-center w-full px-6 py-3 mb-3 text-lg text-black rounded-md sm:mb-0 bg-yellow-300">
           {!userHasPlugin ? " Add Plugin" : "Plugin Connected"}
+        </button>
+        <button
+          onClick={claimDividendFn}
+          type="submit"
+          className="flex items-center justify-center w-full px-6 py-3 mb-3 text-lg text-black rounded-md sm:mb-0 bg-yellow-300">
+          Claim Dividend
         </button>
       </div>
       {balance && balance.length > 0 && <PortfolioStatsWidget data={balance} />}
