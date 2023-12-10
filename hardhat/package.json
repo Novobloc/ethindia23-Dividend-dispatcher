@@ -37,8 +37,8 @@
   },
   "scripts": {
     "compile": "hardhat compile",
-    "deploy": "hardhat run --network polygonmumbai scripts/deploy.js",
-    "verify": "hardhat verify --network polygonmumbai 0x3Bd86E4b4bf781C1bb3401bF5AEE7aa0d34EA8Fb 'CompanyStock' 'COM' 5 500000",
-    "verify-plugin": "hardhat verify --network polygonmumbai 0x235Ae9aAE2D5D62223807fF229907cE02fE67B6b 'DividendDispatcher' 'DDP' 0x3Bd86E4b4bf781C1bb3401bF5AEE7aa0d34EA8Fb"
+    "deploy": "hardhat run --network scroll scripts/deploy.js",
+    "verify": "hardhat verify --network polygonzkevm 0xAa4fd77096922BE5540903C6FD892101Adeb34ce 'CompanyStock' 'COM' 5 500000",
+    "verify-plugin": "hardhat verify --network polygonzkevm 0x022c6a6adfA225f625791CDE23f45Aa811e26469 'DividendDispatcher' 'DDP' 0xAa4fd77096922BE5540903C6FD892101Adeb34ce"
   }
 }
