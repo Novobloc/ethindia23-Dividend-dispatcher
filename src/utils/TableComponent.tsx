@@ -21,7 +21,11 @@ export default function ComplexTable(props: { tableData: any }) {
     columnHelper.accessor("hash", {
       id: "hash",
       header: () => <p className="text-sm font-bold text-gray-600 dark:text-white">Hash</p>,
-      cell: (info: { getValue: () => string | number }) => <p className="text-sm font-bold text-navy-700 dark:text-white">{info.getValue()}</p>
+      cell: (info: { getValue: () => string | number }) => (
+        <p className="text-sm font-bold text-navy-700 dark:text-white">
+          <code>{info.getValue()}</code>
+        </p>
+      )
     }),
     columnHelper.accessor("value", {
       id: "value",
@@ -36,7 +40,7 @@ export default function ComplexTable(props: { tableData: any }) {
           | React.ReactPortal
           | null
           | undefined;
-      }) => <p className="text-sm font-bold text-navy-700 dark:text-white">{info.getValue()}</p>
+      }) => <p className="text-sm font-bold text-navy-700 dark:text-white items-end">{info.getValue()}</p>
     })
     // columnHelper.accessor("details.status", {
     //   id: "status",
@@ -117,7 +121,7 @@ export default function ComplexTable(props: { tableData: any }) {
                   <tr key={row.id}>
                     {row.getVisibleCells().map((cell: any) => {
                       return (
-                        <td key={cell.id} className="min-w-[150px] border-white/0 py-3  pr-4">
+                        <td key={cell.id} className="min-w-[150px] border-white/0 py-3 item-end pr-4">
                           {flexRender(cell.column.columnDef.cell, cell.getContext())}
                         </td>
                       );

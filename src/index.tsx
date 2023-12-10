@@ -9,9 +9,10 @@ import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { mainnet, polygon, optimism, arbitrum, base, polygonMumbai, polygonZkEvmTestnet } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import { x1 } from "helpers/customChain";
 
 const { chains, publicClient } = configureChains(
-  [polygonMumbai, mainnet, polygon, optimism, arbitrum, base, polygonZkEvmTestnet],
+  [polygonMumbai, mainnet, polygon, optimism, arbitrum, base, polygonZkEvmTestnet, x1],
   [alchemyProvider({ apiKey: String(import.meta.env.VITE_ALCHEMY_ID) }), publicProvider()]
 );
 
