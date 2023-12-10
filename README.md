@@ -8,6 +8,9 @@
 
 **Dividend Dispatcher token Plugin** is a plugin that allows you to issue company stocks and distribute dividends to your stockholders. It is a simple and easy to use app that allows you to distribute dividends to your token holders.
 
+This is done by using a plugable ERC20 that can be subscribed to various plugins on the chain. A CompanyShare Token that can be distributed to the stake holder that can be subscribed to the Dividend dispatcher to enable the company to pay dividends to its shareholders.
+
+
 <br>
 
 ## Demo
@@ -62,7 +65,15 @@ npm start
 
 4. Open this link in browser http://localhost:3001
 
-5. Write about the running and deploying the smart contract.
+### Steps to Deploy the SMART CONTRACTS
+
+```
+cd hardhat
+npm i
+npm run compile
+npm run deploy
+
+```
 
 <br>
 
