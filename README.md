@@ -10,7 +10,6 @@
 
 This is done by using a plugable ERC20 that can be subscribed to various plugins on the chain. A CompanyShare Token that can be distributed to the stake holder that can be subscribed to the Dividend dispatcher to enable the company to pay dividends to its shareholders.
 
-
 <br>
 
 ## Demo
@@ -19,25 +18,20 @@ This is done by using a plugable ERC20 that can be subscribed to various plugins
 
 ![Home](image/home.png)
 
-
-
 <br>
 
 Github : <a style="margin-bottom: 5px;" href="https://github.com/Novobloc/ethindia23-Dividend-dispatcher" target="_blank"> Repo Link </a>
 
-Video : <a style="margin-bottom: 5px;" href="https://www.youtube.com/watch?v=jGwO_UgTS7I&list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU" target="_blank"> Youtube Link </a>
-
+Video : <a style="margin-bottom: 5px;" href="https://www.loom.com/share/d18912b1c10a4daca6d6d7750f90b4e2?sid=7f2276c0-ff95-4b10-b4ad-70d6269c4132" target="_blank"> Loom Link </a>
 
 ## Stack We Used
-
 
 1. Frontend: We used **React JS**, Tailwind CSS for UI.
 
 2. Blockchain :
    1. 1Inch: We used **ERC20** plugins by 1Inch.
    2. Chain: **X1** to connect with blockchain on testnet.
-   3. RPC: We used **Alchemy**  RPC url to connect to the chain.
-   
+   3. RPC: We used **Alchemy** RPC url to connect to the chain.
 
 ## Steps to Run the Project
 
@@ -83,12 +77,13 @@ OKX X1 Testnet:
 https://www.oklink.com/x1-test/address/0xaa4fd77096922be5540903c6fd892101adeb34ce
 https://www.oklink.com/x1-test/address/0x022c6a6adfA225f625791CDE23f45Aa811e26469
 
-
 Scroll Testnet:
 https://sepolia.scrollscan.com/address/0xaa4fd77096922be5540903c6fd892101adeb34ce
 https://sepolia.scrollscan.com/address/0x022c6a6adfA225f625791CDE23f45Aa811e26469
 
-
+Mumbai Testnet:
+https://mumbai.polygonscan.com/address/0xa855a9128c03a203857c9bf48cb496354923479d
+https://mumbai.polygonscan.com/address/0x957e13ac8be4845afb17c2c33fa9ace615b10f07
 
 ## Meet Our Team
 
