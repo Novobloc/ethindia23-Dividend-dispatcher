@@ -25,7 +25,7 @@ module.exports = {
   },
   networks: {
     polygonzkevm: {
-      url: "https://rpc.public.zkevm-test.net",
+      url: "https://rpc-mumbai.maticvigil.com",
       accounts: [process.env.PRIVATE_KEY]
     },
     x1: {

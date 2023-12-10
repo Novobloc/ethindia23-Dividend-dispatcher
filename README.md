@@ -1,6 +1,6 @@
 <br>
 
-![Dividend Dispatcher token Plugin ](images/title.png)
+![Dividend Dispatcher token Plugin ](image/title.png)
 
 # Dividend Dispatcher token Plugin
 
@@ -17,7 +17,7 @@ This is done by using a plugable ERC20 that can be subscribed to various plugins
 
 ### Home Page
 
-![Home](images/home.png)
+![Home](image/home.png)
 
 
 
@@ -27,13 +27,9 @@ Github : <a style="margin-bottom: 5px;" href="https://github.com/Novobloc/ethind
 
 Video : <a style="margin-bottom: 5px;" href="https://www.youtube.com/watch?v=jGwO_UgTS7I&list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU" target="_blank"> Youtube Link </a>
 
-## App Flow
-
-![Dividend Dispatcher](images/flow.png)
 
 ## Stack We Used
 
-![alt text](images/stack.png)
 
 1. Frontend: We used **React JS**, Tailwind CSS for UI.
 
