@@ -3,16 +3,16 @@ export const config: any = {
     name: "Polygon Mumbai",
     chainId: 80001,
     rpcUrl: "http://",
-    tokenContractAddress: "0x4CD37E6cFf2720B85bE07bABd7438EA72c9F6E57",
-    pluginContractAddress: "0x235Ae9aAE2D5D62223807fF229907cE02fE67B6b"
+    tokenContractAddress: "0xAa4fd77096922BE5540903C6FD892101Adeb34ce",
+    pluginContractAddress: "0x022c6a6adfA225f625791CDE23f45Aa811e26469"
   },
   195: {
     name: "X1",
     chainId: 195,
     rpcUrl: "http://",
-    tokenContractAddress: "0x4CD37E6cFf2720B85bE07bABd7438EA72c9F6E57",
-    pluginContractAddress: "0x235Ae9aAE2D5D62223807fF229907cE02fE67B6b"
+    tokenContractAddress: "0xAa4fd77096922BE5540903C6FD892101Adeb34ce",
+    pluginContractAddress: "0x022c6a6adfA225f625791CDE23f45Aa811e26469"
   }
 };
 
-const activeConfig = (chainId: any) => config[chainId];
+export const activeConfig = (chainId: any) => config[chainId];
