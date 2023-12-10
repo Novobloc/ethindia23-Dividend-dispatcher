@@ -24,10 +24,19 @@ module.exports = {
     }
   },
   networks: {
-    polygonmumbai: {
-      url: "https://rpc-mumbai.maticvigil.com",
+    polygonzkevm: {
+      url: "https://rpc.public.zkevm-test.net",
       accounts: [process.env.PRIVATE_KEY]
-    }
+    },
+    x1: {
+      url: "https://testrpc.x1.tech",
+      accounts: [process.env.PRIVATE_KEY]
+    },
+    scroll: {
+      url: "https://sepolia-rpc.scroll.io",
+      accounts: [process.env.PRIVATE_KEY]
+    },
+
   },
   namedAccounts: {
     deployer: {

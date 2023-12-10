@@ -66,6 +66,23 @@ npm start
 
 <br>
 
+Deployed Contracts:
+
+Polygon ZkEvm Testnet:
+https://testnet-zkevm.polygonscan.com/address/0xAa4fd77096922BE5540903C6FD892101Adeb34ce
+https://testnet-zkevm.polygonscan.com/address/0x022c6a6adfA225f625791CDE23f45Aa811e26469
+
+OKX X1 Testnet:
+https://www.oklink.com/x1-test/address/0xaa4fd77096922be5540903c6fd892101adeb34ce
+https://www.oklink.com/x1-test/address/0x022c6a6adfA225f625791CDE23f45Aa811e26469
+
+
+Scroll Testnet:
+https://sepolia.scrollscan.com/address/0xaa4fd77096922be5540903c6fd892101adeb34ce
+https://sepolia.scrollscan.com/address/0x022c6a6adfA225f625791CDE23f45Aa811e26469
+
+
+
 ## Meet Our Team
 
 <div style="display: flex; justify-content: space-between; align-items: center;">

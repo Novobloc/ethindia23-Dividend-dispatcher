@@ -77,7 +77,7 @@ export default function Example() {
         <h2 className="text-3xl font-normal tracking-tight text-slate-900 sm:text-4xl">Admin</h2>
       </div>
       <div>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form  className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="space-y-4">
           <div>
             <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
@@ -119,7 +119,7 @@ export default function Example() {
           </button>
         </div>
       </form>
-      <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div>
           <div>
             <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
