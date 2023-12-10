@@ -98,7 +98,7 @@ const MyPortfolioPage = () => {
       console.log(result, "addPlugin");
 
       if (result) {
-        alert("Plugin added successfully");
+        alert("Claimed Dividend successfully");
       }
     } catch (error) {
       console.error("Error adding plugin:", error);

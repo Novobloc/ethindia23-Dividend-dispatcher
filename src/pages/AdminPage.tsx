@@ -67,7 +67,7 @@ export default function Example() {
     if (shs) {
       setMintAddress(null);
       setMintValue(null);
-      alert("Minted successfully");
+      alert("Minted Shares successfully");
     }
   };
 
@@ -77,77 +77,76 @@ export default function Example() {
         <h2 className="text-3xl font-normal tracking-tight text-slate-900 sm:text-4xl">Admin</h2>
       </div>
       <div>
-      <form  className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div className="space-y-4">
-          <div>
-            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Address
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="text"
-                onChange={(e: any) => setMintAddress(e.target.value)}
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
+        <form className="mx-auto mt-16 max-w-xl sm:mt-20">
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+                Address
+              </label>
+              <div className="mt-2.5">
+                <input
+                  type="text"
+                  onChange={(e: any) => setMintAddress(e.target.value)}
+                  name="last-name"
+                  id="last-name"
+                  autoComplete="family-name"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+                No of Shares
+              </label>
+              <div className="mt-2.5">
+                <input
+                  type="number"
+                  onChange={(e: any) => setMintValue(e.target.value)}
+                  name="last-name"
+                  id="last-name"
+                  autoComplete="family-name"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
           </div>
+          <div className="mt-10">
+            <button
+              onClick={allocateSharesFunction}
+              type="submit"
+              className="flex items-center justify-center w-full px-6 py-3 mb-3 text-lg hover:text-white text-black rounded-md sm:mb-0 bg-yellow-300 hover:bg-black">
+              Allocate Shares
+            </button>
+          </div>
+        </form>
+        <form className="mx-auto mt-16 max-w-xl sm:mt-20">
           <div>
-            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              No of Shares
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="number"
-                onChange={(e: any) => setMintValue(e.target.value)}
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
+            <div>
+              <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+                Value
+              </label>
+              <div className="mt-2.5">
+                <input
+                  type="number"
+                  onChange={(e: any) => setValue(e.target.value)}
+                  name="last-name"
+                  id="last-name"
+                  autoComplete="family-name"
+                  className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="mt-10">
-          <button
-            onClick={allocateSharesFunction}
-            type="submit"
-            className="flex items-center justify-center w-full px-6 py-3 mb-3 text-lg hover:text-white text-black rounded-md sm:mb-0 bg-yellow-300 hover:bg-black">
-            Allocate Shares
-          </button>
-        </div>
-      </form>
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <div>
-          <div>
-            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
-              Value
-            </label>
-            <div className="mt-2.5">
-              <input
-                type="number"
-                onChange={(e: any) => setValue(e.target.value)}
-                name="last-name"
-                id="last-name"
-                autoComplete="family-name"
-                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
-            </div>
+          <div className="mt-10">
+            <button
+              type="submit"
+              onClick={setDividendFunction}
+              className="flex items-center justify-center w-full px-6 py-3 mb-3 text-lg hover:text-white text-black rounded-md sm:mb-0 bg-yellow-300 hover:bg-black">
+              Publish Dividend
+            </button>
           </div>
-        </div>
-        <div className="mt-10">
-          <button
-            type="submit"
-            onClick={setDividendFunction}
-            className="flex items-center justify-center w-full px-6 py-3 mb-3 text-lg hover:text-white text-black rounded-md sm:mb-0 bg-yellow-300 hover:bg-black">
-            Publish Dividend
-          </button>
-        </div>
-      </form>
+        </form>
       </div>
-      
     </div>
   );
 }
