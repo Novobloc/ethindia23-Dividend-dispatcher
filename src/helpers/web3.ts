@@ -1,15 +1,20 @@
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import contractABICom from "../constants/abi-com.json";
 import contractABIDividend from "../constants/abi-dividend.json";
+import { activeConfig } from "../Config";
 
 const API_URL = `https://polygon-mumbai.g.alchemy.com/v2/${import.meta.env.VITE_ALCHEMY_API_KEY}`;
 const web3 = createAlchemyWeb3(API_URL);
 
-const contractAddressCom = "0x4CD37E6cFf2720B85bE07bABd7438EA72c9F6E57";
-const contractAddressDividend = "0x235Ae9aAE2D5D62223807fF229907cE02fE67B6b";
+const chain: any = localStorage.getItem("chainId");
+console.log(chain, "chain");
+const contractAddressCom = activeConfig(chain?.id)?.tokenContractAddress;
+const contractAddressDividend = activeConfig(chain?.id)?.pluginAddress;
 
 export const comContract = new web3.eth.Contract(contractABICom, contractAddressCom);
 export const dividendContract = new web3.eth.Contract(contractABIDividend, contractAddressDividend);
+
+console.log(comContract, "comContract");
 
 // const signer = provider.getSigner();
 // const Contract = new ethers.Cont ract(Config.CREATOR_FUND.MUMBAI.CONTRACT_ADDRESS, Config.CREATOR_FUND.MUMBAI.ABI, signer);
@@ -45,6 +50,8 @@ export const allocateShares = async (address: string, value: any, toAddress: any
 };
 
 export const addPlugin = async (address: string, pluginAddress: any) => {
+  console.log(address, pluginAddress);
+
   const pluginAdded = await comContract.methods
     .addPlugin(web3.utils.toChecksumAddress(pluginAddress))
     .send({ from: web3.utils.toChecksumAddress(address) });
